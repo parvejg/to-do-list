@@ -1,0 +1,58 @@
+.list-page-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+}
+.input-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  text-align: center;
+  background: red;
+  height: 100px;
+  justify-items: center;
+}
+.list-input-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  justify-content: center;
+}
+.list-input {
+  height: 38px;
+  width: 60%;
+  margin: 0;
+  border: none;
+}
+.list-add-btn {
+  border: none;
+  height: 40px;
+  width: 10%;
+  font-size: large;
+  margin: 0;
+}
+.list-add-btn:hover {
+  background-color: gainsboro;
+}
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 80%;
+}
+.item-list {
+  list-style: none;
+  width: 100%;
+  text-align: left;
+  background-color: gray;
+  border: solid 1px white;
+}
+li:checked {
+  text-decoration: line-through;
+  background-color: red;
+}
