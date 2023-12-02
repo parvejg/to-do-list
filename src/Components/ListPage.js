@@ -10,13 +10,15 @@ export const ListPage = () => {
       newTodosObj.id = todo?.length + 1;
     }
     const obj = [...todo, newTodosObj];
-    console.log(obj);
     setTodo(obj);
-    // setNewTodosText("");
+    setNewTodosText("");
   };
-  const removeListHandler = () => {
-    if (todo.length === 1) {
-    }
+  const checkTodosHandler = (e, id) => {
+    const findTodo = todo?.find((item) => item.id === id);
+    const findIndex = todo?.findIndex((item) => item.id === id);
+    let newTodos = [...todo];
+    newTodos[findIndex] = { ...findTodo, isCompleted: true };
+    setTodo(newTodos);
   };
   return (
     <div className="list-page-main-wrapper">
@@ -40,14 +42,12 @@ export const ListPage = () => {
             <div key={newList.id} className="todos-list">
               <li
                 value={newList.id}
-                className="item-list"
-                onClick={(e) => console.log(e.target.value)}
+                className={newList.isCompleted ? "completed-todo" : "item-list"}
+                onClick={(e) => checkTodosHandler(e, newList.id)}
               >
                 {newList.text}
               </li>
-              <button className="close-btn" onClick={removeListHandler}>
-                X
-              </button>
+              <button className="close-btn">X</button>
             </div>
           );
         })}

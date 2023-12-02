@@ -71,3 +71,12 @@
   background-color: red;
   color: wheat;
 }
+.completed-todo {
+  text-decoration: line-through;
+  list-style: none;
+  text-align: left;
+  background-color: rgb(179, 179, 179);
+  border-top: 1px solid white;
+  padding: 0.6rem 0;
+  width: 100%;
+}
