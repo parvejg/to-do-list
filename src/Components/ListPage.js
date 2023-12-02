@@ -1,17 +1,22 @@
 import { useState } from "react";
 import "./ListPage.css";
 export const ListPage = () => {
-  const [newTodosText, SetNewTodosText] = useState("");
+  const [newTodosText, setNewTodosText] = useState("");
   const [todo, setTodo] = useState([]);
-  const newTodosObj = {};
   const addToListHandler = () => {
-    if (newTodosText) {
+    let newTodosObj = {};
+    if (!!newTodosText) {
       newTodosObj.text = newTodosText;
       newTodosObj.id = todo?.length + 1;
-      newTodosObj.isTodoListComplete = false;
     }
-    setTodo([...todo, newTodosObj]);
-    SetNewTodosText("");
+    const obj = [...todo, newTodosObj];
+    console.log(obj);
+    setTodo(obj);
+    // setNewTodosText("");
+  };
+  const removeListHandler = () => {
+    if (todo.length === 1) {
+    }
   };
   return (
     <div className="list-page-main-wrapper">
@@ -22,7 +27,7 @@ export const ListPage = () => {
             className="list-input"
             placeholder="Title...."
             value={newTodosText}
-            onChange={(e) => SetNewTodosText(e.target.value)}
+            onChange={(e) => setNewTodosText(e.target.value)}
           />
           <button className="list-add-btn" onClick={addToListHandler}>
             Add List
@@ -40,7 +45,9 @@ export const ListPage = () => {
               >
                 {newList.text}
               </li>
-              <span className="close-btn">X</span>
+              <button className="close-btn" onClick={removeListHandler}>
+                X
+              </button>
             </div>
           );
         })}
