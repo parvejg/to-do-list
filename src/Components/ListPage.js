@@ -3,11 +3,13 @@ import "./ListPage.css";
 export const ListPage = () => {
   const [newTodosText, setNewTodosText] = useState("");
   const [todo, setTodo] = useState([]);
+
   const addToListHandler = () => {
     let newTodosObj = {};
-    if (!!newTodosText) {
+    if (newTodosText !== "") {
       newTodosObj.text = newTodosText;
       newTodosObj.id = todo?.length + 1;
+      newTodosObj.isCompleted = false;
     }
     const obj = [...todo, newTodosObj];
     setTodo(obj);
@@ -20,6 +22,13 @@ export const ListPage = () => {
     newTodos[findIndex] = { ...findTodo, isCompleted: true };
     setTodo(newTodos);
   };
+  const removeTodoHandler = (value) => {
+    let filteredTodo = todo?.filter(
+      (todoItem) => todoItem.id !== Number(value)
+    );
+    setTodo(filteredTodo);
+    console.log({ value, filteredTodo });
+  };
   return (
     <div className="list-page-main-wrapper">
       <div className="input-main-wrapper">
@@ -31,7 +40,11 @@ export const ListPage = () => {
             value={newTodosText}
             onChange={(e) => setNewTodosText(e.target.value)}
           />
-          <button className="list-add-btn" onClick={addToListHandler}>
+          <button
+            className="list-add-btn"
+            onClick={addToListHandler}
+            disabled={!newTodosText}
+          >
             Add List
           </button>
         </div>
@@ -47,7 +60,13 @@ export const ListPage = () => {
               >
                 {newList.text}
               </li>
-              <button className="close-btn">X</button>
+              <button
+                className="close-btn"
+                value={newList.id}
+                onClick={(e) => removeTodoHandler(e.target.value)}
+              >
+                X
+              </button>
             </div>
           );
         })}
