@@ -27,7 +27,6 @@ export const ListPage = () => {
       (todoItem) => todoItem.id !== Number(value)
     );
     setTodo(filteredTodo);
-    console.log({ value, filteredTodo });
   };
   return (
     <div className="list-page-main-wrapper">

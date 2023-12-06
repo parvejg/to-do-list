@@ -82,3 +82,12 @@
   width: 100%;
   padding-left: 8px;
 }
+@media (max-width: 600px) {
+  .input-main-wrapper {
+    width: 80%;
+  }
+  .list-add-btn {
+    padding: 0.3re 1rem;
+    min-width: 70px;
+  }
+}
